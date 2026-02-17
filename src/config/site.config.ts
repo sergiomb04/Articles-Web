@@ -102,7 +102,7 @@ export const siteConfig: SiteConfig = {
         description: 'Sistema dinámico de artículos en Markdown con soporte completo para GFM, Mermaid, KaTeX y más.',
     },
     theme: {
-        defaultMode: 'light', // Cambia a 'dark' o 'system' según prefieras
+        defaultMode: 'dark',
         colors: {
             primary: {
                 light: 'blue-600',
@@ -155,7 +155,7 @@ export const siteConfig: SiteConfig = {
         footer: {
             text: 'Article Reader',
             year: 2026,
-            showPath: true, // Mostrar la ruta actual en el footer
+            showPath: true,
         },
     },
     ui: {

@@ -27,7 +27,7 @@ export default function Home({ items }: HomeProps) {
             </Head>
 
             <div className="max-w-4xl mx-auto px-6 py-20">
-                <header className="mb-12">
+                <header className="my-12">
                     <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
                         {siteConfig.content.home.title}
                     </h1>
