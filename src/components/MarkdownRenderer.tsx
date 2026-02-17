@@ -21,11 +21,11 @@ interface MarkdownRendererProps {
 
 const Callout: React.FC<{ type: string; children: React.ReactNode }> = ({ type, children }) => {
     const styles: Record<string, { bg: string; border: string; icon: string; text: string; label: string }> = {
-        '!NOTE': { bg: 'bg-blue-50/50 dark:bg-blue-900/20', border: 'border-blue-500', icon: 'ℹ️', text: 'text-blue-700 dark:text-blue-300', label: 'Nota' },
-        '!TIP': { bg: 'bg-emerald-50/50 dark:bg-emerald-900/20', border: 'border-emerald-500', icon: '💡', text: 'text-emerald-700 dark:text-emerald-300', label: 'Tip' },
-        '!IMPORTANT': { bg: 'bg-purple-50/50 dark:bg-purple-900/20', border: 'border-purple-500', icon: '✨', text: 'text-purple-700 dark:text-purple-300', label: 'Importante' },
-        '!WARNING': { bg: 'bg-amber-50/50 dark:bg-amber-900/20', border: 'border-amber-500', icon: '⚠️', text: 'text-amber-700 dark:text-amber-300', label: 'Aviso' },
-        '!CAUTION': { bg: 'bg-red-50/50 dark:bg-red-900/20', border: 'border-red-500', icon: '🚫', text: 'text-red-700 dark:text-red-300', label: 'Cuidado' },
+        '!NOTE': { bg: 'bg-blue-100 dark:bg-blue-900/40', border: 'border-blue-500', icon: 'ℹ️', text: 'text-blue-700 dark:text-blue-300', label: 'Nota' },
+        '!TIP': { bg: 'bg-emerald-100 dark:bg-emerald-900/40', border: 'border-emerald-500', icon: '💡', text: 'text-emerald-700 dark:text-emerald-300', label: 'Tip' },
+        '!IMPORTANT': { bg: 'bg-purple-100 dark:bg-purple-900/40', border: 'border-purple-500', icon: '✨', text: 'text-purple-700 dark:text-purple-300', label: 'Importante' },
+        '!WARNING': { bg: 'bg-amber-100 dark:bg-amber-900/40', border: 'border-amber-500', icon: '⚠️', text: 'text-amber-700 dark:text-amber-300', label: 'Aviso' },
+        '!CAUTION': { bg: 'bg-red-100 dark:bg-red-900/40', border: 'border-red-500', icon: '🚫', text: 'text-red-700 dark:text-red-300', label: 'Cuidado' },
     };
     const style = styles[type] || styles['!NOTE'];
     return (
