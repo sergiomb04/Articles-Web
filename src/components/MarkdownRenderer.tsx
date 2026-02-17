@@ -105,7 +105,7 @@ const Tabs: React.FC<{ items: { title: string; content: React.ReactNode }[] }> =
     if (!items.length) return null;
     return (
         <div className="my-8 border border-slate-200 dark:border-slate-800 rounded-2xl overflow-hidden bg-white dark:bg-slate-900 shadow-xl">
-            <div className="flex border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50 p-1">
+            <div className="flex border-b border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-800/50 p-1">
                 {items.map((item, index) => (
                     <button key={index} onClick={() => setActiveTab(index)} className={`flex-1 py-3 px-4 text-sm font-bold rounded-xl transition-all ${activeTab === index ? 'bg-white dark:bg-slate-700 text-blue-600' : 'text-slate-500'}`}>
                         {item.title}
@@ -294,7 +294,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                         ),
                         code: ({ className, children }) => {
                             if (className?.includes('language-mermaid')) return <Mermaid chart={String(children).replace(/\n$/, '')} />;
-                            if (!className || !className.startsWith('language-')) return <code className="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm text-pink-600 dark:text-pink-400 font-mono">{children}</code>;
+                            if (!className || !className.startsWith('language-')) return <code className="bg-slate-200 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm text-pink-600 dark:text-pink-400 font-mono">{children}</code>;
                             return <code className={`${className} bg-transparent p-0`}>{children}</code>;
                         },
                         img: ({ src, alt }) => <OptimizedImage src={src} alt={alt} />,

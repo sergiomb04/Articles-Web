@@ -220,7 +220,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
                                     <div className="flex items-center gap-2 flex-wrap">
                                         <span>•</span>
                                         {tags.map(tag => (
-                                            <span key={tag} className="bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full text-xs font-bold text-blue-600 dark:text-blue-400">
+                                            <span key={tag} className="bg-blue-100 dark:bg-slate-800 px-2.5 py-1 rounded-full text-xs font-bold text-blue-600 dark:text-blue-400">
                                                 #{tag}
                                             </span>
                                         ))}
