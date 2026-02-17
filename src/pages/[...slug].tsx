@@ -369,7 +369,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         };
     } else {
         const fileContent = fs.readFileSync(currentActualPath, 'utf8');
-        const { data, content: rawContent } = matter(fileContent);
+        const { data: rawData, content: rawContent } = matter(fileContent);
+        const data = JSON.parse(JSON.stringify(rawData));
 
         // Simple minification: remove extra empty lines
         const content = rawContent.replace(/\n\s*\n/g, '\n\n').trim();
