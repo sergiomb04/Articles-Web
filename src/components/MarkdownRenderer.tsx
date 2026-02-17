@@ -199,20 +199,32 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                 prose-blockquote:border-l-4 prose-blockquote:border-slate-300 dark:prose-blockquote:border-slate-600 prose-blockquote:bg-slate-50/50 dark:prose-blockquote:bg-slate-800/10 prose-blockquote:px-8 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:my-8
             `} id="article-content">
                 <ReactMarkdown
-                    remarkPlugins={[remarkGfm, remarkMath, remarkUnwrapImages, [remarkToc, { heading: 'Tabla de Contenidos', tight: true, maxDepth: 3 }]]}
-                    rehypePlugins={[rehypeRaw, rehypeSlug, rehypeHighlight, rehypeKatex, [rehypeSanitize, {
-                        ...defaultSchema,
-                        tagNames: [...(defaultSchema.tagNames || []), 'iframe', 'div', 'section', 'style', 'figure', 'figcaption'],
-                        attributes: {
-                            ...defaultSchema.attributes,
-                            iframe: ['src', 'title', 'frameBorder', 'allow', 'allowFullScreen', 'className'],
-                            div: ['className', 'id'],
-                            section: ['className'],
-                            span: ['className'],
-                            button: ['className', 'onClick', 'title'],
-                            '*': ['className', 'id', 'style']
-                        }
-                    }]]}
+                    remarkPlugins={[remarkUnwrapImages, remarkGfm, remarkMath, [remarkToc, { heading: 'Tabla de Contenidos', tight: true, maxDepth: 3 }]]}
+                    rehypePlugins={[
+                        rehypeRaw,
+                        rehypeHighlight,
+                        rehypeKatex,
+                        [rehypeSanitize, {
+                            ...defaultSchema,
+                            tagNames: [...(defaultSchema.tagNames || []), 'iframe', 'div', 'section', 'style', 'figure', 'figcaption'],
+                            attributes: {
+                                ...defaultSchema.attributes,
+                                iframe: ['src', 'title', 'frameBorder', 'allow', 'allowFullScreen', 'className'],
+                                div: ['className', 'id'],
+                                section: ['className'],
+                                span: ['className'],
+                                button: ['className', 'onClick', 'title'],
+                                '*': ['className', 'style'],
+                                h1: ['className'],
+                                h2: ['className'],
+                                h3: ['className'],
+                                h4: ['className'],
+                                h5: ['className'],
+                                h6: ['className']
+                            }
+                        }],
+                        rehypeSlug // Slug AFTER sanitize ensures IDs are applied to the final safe HTML
+                    ]}
                     components={{
                         p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
                         blockquote: ({ children }) => {
