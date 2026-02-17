@@ -33,12 +33,13 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ content }) => {
         const headingVisibility = new Map<string, boolean>();
 
         const callback: IntersectionObserverCallback = (entries) => {
-            if (isManualScroll.current) return;
-
-            // Update visibility map
+            // Update visibility map always, even during manual scroll, 
+            // to ensure state is accurate when lock is released
             entries.forEach((entry) => {
                 headingVisibility.set(entry.target.id, entry.isIntersecting);
             });
+
+            if (isManualScroll.current) return;
 
             // Find the first visible heading
             const visibleId = items.find(item => headingVisibility.get(item.id))?.id;
