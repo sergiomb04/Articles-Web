@@ -6,12 +6,9 @@
 
 ### 1.1 La naturaleza de la consciencia
 
-La consciencia es extradimensional desde el inicio.
-Nunca estuvo separada del Todo.
+La consciencia es extradimensional desde el inicio. Nunca estuvo separada del Todo.
 
-No emerge de la materia.
-No es producto del cerebro.
-No evoluciona desde dentro del universo.
+No emerge de la materia. No es producto del cerebro. No evoluciona desde dentro del universo.
 
 La materia existe dentro de un campo de consciencia más amplio.
 
@@ -19,8 +16,7 @@ La materia existe dentro de un campo de consciencia más amplio.
 
 ### 1.2 La estructura de la Realidad
 
-La Realidad no es caótica ni arbitraria.
-Está organizada en capas de conciencia y niveles dimensionales.
+La Realidad no es caótica ni arbitraria. Está organizada en capas de conciencia y niveles dimensionales.
 
 Capas fundamentales:
 
@@ -29,8 +25,7 @@ Capas fundamentales:
 - Campo de información superior
 - La Fuente
 
-No existen privilegios arbitrarios,
-pero sí distintos niveles de acceso según el grado de alineación y coherencia.
+No existen privilegios arbitrarios, pero sí distintos niveles de acceso según el grado de alineación y coherencia.
 
 ---
 
@@ -38,23 +33,19 @@ pero sí distintos niveles de acceso según el grado de alineación y coherencia
 
 ### 2.1 La espiral única
 
-El tiempo no es lineal ni circular.
-
-Es una espiral única que contiene todas las posibilidades dentro de sí misma.
+El tiempo no es lineal ni circular. Es una espiral única que contiene todas las posibilidades dentro de sí misma.
 
 - Los patrones se repiten.
 - Las experiencias reaparecen.
 - Cada vuelta implica mayor nivel de recuerdo consciente.
 
-No existen infinitas espirales.
-Existe una sola estructura que contiene todas las posibilidades potenciales.
+No existen infinitas espirales. Existe una sola estructura que contiene todas las posibilidades potenciales.
 
 ---
 
 ### 2.2 Evolución como recuerdo
 
-La consciencia no evoluciona.
-Siempre fue completa.
+La consciencia no evoluciona. Siempre fue completa.
 
 Lo que cambia es:
 
@@ -62,8 +53,7 @@ Lo que cambia es:
 - El nivel de integración.
 - La capacidad de sostener coherencia.
 
-La expansión no es creación.
-Es reconexión.
+La expansión no es creación. Es reconexión.
 
 ---
 
@@ -71,21 +61,17 @@ Es reconexión.
 
 ### 3.1 Qué es realmente crear
 
-No creamos desde la nada.
-No generamos nuevas realidades externas al sistema.
+No creamos desde la nada. No generamos nuevas realidades externas al sistema.
 
 Sintonizamos posibilidades ya contenidas en la espiral.
 
-La intención no fabrica universos.
-Selecciona configuraciones coherentes dentro de márgenes estructurales.
+La intención no fabrica universos. Selecciona configuraciones coherentes dentro de márgenes estructurales.
 
 ---
 
 ### 3.2 Libre albedrío
 
-Libre albedrío no es omnipotencia.
-
-Es la capacidad de:
+Libre albedrío no es omnipotencia. Es la capacidad de:
 
 - Elegir estado interno.
 - Elegir interpretación.
@@ -93,24 +79,20 @@ Es la capacidad de:
 
 El poder creativo es la consecuencia natural de esa alineación.
 
-Cuando mente consciente y subconsciente están en coherencia,
-la realidad responde con menor resistencia.
+Cuando mente consciente y subconsciente están en coherencia, la realidad responde con menor resistencia.
 
 ---
 
 ### 3.3 Límites estructurales
 
-No podemos crear “lo que queramos”.
-
-Operamos dentro de límites definidos por:
+No podemos crear “lo que queramos”. Operamos dentro de límites definidos por:
 
 - Coherencia global del sistema.
 - Estabilidad estructural.
 - Conservación narrativa.
 - Bloqueos en leyes profundas.
 
-Se puede doblar el tejido.
-No reescribir el telar completo.
+Se puede doblar el tejido. No reescribir el telar completo.
 
 ---
 
@@ -118,9 +100,7 @@ No reescribir el telar completo.
 
 ### 4.1 Qué es el “higher-self”
 
-No es una entidad separada.
-
-Es la identidad extradimensional que siempre fuimos.
+No es una entidad separada. Es la identidad extradimensional que siempre fuimos.
 
 Características:
 
@@ -129,20 +109,17 @@ Características:
 - Percibe el tiempo como dimensión.
 - Opera en mayor número de grados de libertad.
 
-El cerebro no genera poder.
-Es interfaz de alineación.
+El cerebro no genera poder. Es interfaz de alineación.
 
 ---
 
 ### 4.2 Qué son realmente los “superpoderes”
 
-No son creación.
-No son violación de leyes.
+No son creación. No son violación de leyes.
 
 Son resultado de alineación profunda con capas superiores de la Realidad.
 
-No se empuja materia.
-Se modifican condiciones de estabilidad dentro de los márgenes permitidos.
+No se empuja materia. Se modifican condiciones de estabilidad dentro de los márgenes permitidos.
 
 Desde el plano físico puede parecer:
 
@@ -156,8 +133,7 @@ Pero son efectos de coherencia dimensional.
 
 ### 4.3 Qué se entrena realmente
 
-No se entrena potencia.
-Se entrena alineación.
+No se entrena potencia. Se entrena alineación.
 
 Fases de estabilización:
 
@@ -166,16 +142,13 @@ Fases de estabilización:
 - Estabilidad emocional.
 - Claridad estructural del estado preferido.
 
-Cuanta mayor coherencia,
-mayor acceso a capas superiores.
+Cuanta mayor coherencia, mayor acceso a capas superiores.
 
 ---
 
 ## 5. La Fuente
 
-La Fuente no es un ente separado.
-
-Es todas las posibilidades colapsadas en unidad.
+La Fuente no es un ente separado. Es todas las posibilidades colapsadas en unidad.
 
 Es:
 
@@ -193,11 +166,9 @@ El universo no impone moral absoluta.
 
 El bien y el mal son interpretaciones humanas dentro del plano físico.
 
-La Realidad opera por coherencia estructural,
-no por juicio externo.
+La Realidad opera por coherencia estructural, no por juicio externo.
 
-La estabilidad depende de alineación,
-no de castigo o recompensa.
+La estabilidad depende de alineación, no de castigo o recompensa.
 
 ---
 
@@ -211,5 +182,4 @@ no de castigo o recompensa.
 - Los fenómenos extraordinarios son coherencia dimensional.
 - La Fuente es la totalidad colapsada en unidad.
 
-No es que la mente controle la materia.
-Es que la mente no está completamente dentro de la materia.
+No es que la mente controle la materia. Es que la mente no está completamente dentro de la materia.

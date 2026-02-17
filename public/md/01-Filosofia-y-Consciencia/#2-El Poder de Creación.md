@@ -4,22 +4,17 @@
 
 ## 1. Idea central
 
-No creamos desde cero.
-Recordamos y alineamos.
+No creamos desde cero. Recordamos y alineamos.
 
-El poder no es fabricar realidad,
-sino sintonizar con una posibilidad ya contenida en la espiral.
+El poder no es fabricar realidad, sino sintonizar con una posibilidad ya contenida en la espiral.
 
-La intención no genera universos nuevos.
-Selecciona dentro de márgenes estructurales.
+La intención no genera universos nuevos. Selecciona dentro de márgenes estructurales.
 
 ---
 
 ## 2. Libre albedrío y alineación
 
-Libre albedrío no es omnipotencia.
-
-Es la capacidad de:
+Libre albedrío no es omnipotencia. Es la capacidad de:
 
 - Elegir estado interno
 - Elegir interpretación
@@ -27,37 +22,30 @@ Es la capacidad de:
 
 El poder creativo es la consecuencia de esa alineación.
 
-Cuando mente consciente y subconsciente están coherentes,
-la realidad fluye con menor resistencia.
+Cuando mente consciente y subconsciente están coherentes, la realidad fluye con menor resistencia.
 
 ---
 
 ## 3. Límites reales
 
-No podemos crear “lo que queramos”.
-
-Creamos dentro de márgenes definidos por:
+No podemos crear “lo que queramos”. Creamos dentro de márgenes definidos por:
 
 - Coherencia global
 - Estructura dimensional
 - Conservación narrativa
 - Estabilidad del sistema
 
-No es magia absoluta.
-Es navegación dentro de un campo estructurado.
+No es magia absoluta. Es navegación dentro de un campo estructurado.
 
 ---
 
 ## 4. Responsabilidad
 
-La responsabilidad no es total en sentido absoluto,
-pero sí significativa.
+La responsabilidad no es total en sentido absoluto, pero sí significativa.
 
-No controlamos todo.
-Pero influimos dentro del rango disponible.
+No controlamos todo. Pero influimos dentro del rango disponible.
 
-El miedo no es tener demasiado poder.
-Es asumir la responsabilidad de la alineación interna.
+El miedo no es tener demasiado poder. Es asumir la responsabilidad de la alineación interna.
 
 ---
 
@@ -65,11 +53,9 @@ Es asumir la responsabilidad de la alineación interna.
 
 Las realidades colectivas emergen del promedio de estados coherentes.
 
-Cambios grandes no requieren unanimidad,
-sino masa crítica de coherencia.
+Cambios grandes no requieren unanimidad, sino masa crítica de coherencia.
 
-La realidad no se impone.
-Se estabiliza según el nivel dominante de alineación.
+La realidad no se impone. Se estabiliza según el nivel dominante de alineación.
 
 ---
 

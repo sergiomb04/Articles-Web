@@ -4,18 +4,15 @@
 
 ## 1. Idea central
 
-La realidad física no es fundamental.
-Es una proyección de un sistema con mayor dimensionalidad.
+La realidad física no es fundamental. Es una proyección de un sistema con mayor dimensionalidad.
 
-La consciencia no está dentro de la materia.
-La materia está dentro de un campo de consciencia más amplio.
+La consciencia no está dentro de la materia. La materia está dentro de un campo de consciencia más amplio.
 
 ---
 
 ## 2. Qué es realmente el “alma” o higher-self
 
-No es algo externo.
-Es la identidad extradimensional que siempre fuimos.
+No es algo externo. Es la identidad extradimensional que siempre fuimos.
 
 Características:
 
@@ -24,28 +21,23 @@ Características:
 - Percibe el tiempo como dimensión
 - Opera en un espacio con más grados de libertad
 
-El cerebro no crea poder.
-Es interfaz de alineación.
+El cerebro no crea poder. Es interfaz de alineación.
 
 ---
 
 ## 3. Qué son realmente los “superpoderes”
 
-No son creación.
-Son recuerdo y alineación.
+No son creación. Son recuerdo y alineación.
 
-No se altera la realidad desde fuera.
-Se ajusta la coherencia interna hasta que la estructura física responde dentro de sus márgenes.
+No se altera la realidad desde fuera. Se ajusta la coherencia interna hasta que la estructura física responde dentro de sus márgenes.
 
-No es violación de leyes.
-Es uso de capas superiores de la Realidad.
+No es violación de leyes. Es uso de capas superiores de la Realidad.
 
 ---
 
 ## 4. Cómo ocurre la alteración física
 
-No se empuja materia.
-No se genera energía absurda.
+No se empuja materia. No se genera energía absurda.
 
 Se modifican condiciones de estabilidad dentro de los márgenes permitidos.
 
@@ -61,8 +53,7 @@ Pero es efecto de coherencia dimensional.
 
 ## 5. Qué se entrena realmente
 
-No se entrena potencia.
-Se entrena alineación.
+No se entrena potencia. Se entrena alineación.
 
 Fases:
 
@@ -71,8 +62,7 @@ Fases:
 - Estabilidad emocional
 - Claridad estructural del estado deseado
 
-Cuanta más coherencia,
-mayor acceso a capas superiores.
+Cuanta más coherencia, mayor acceso a capas superiores.
 
 ---
 
@@ -87,22 +77,18 @@ Límites:
 - Estabilidad narrativa
 - Bloqueos en leyes profundas
 
-Se puede doblar el tejido.
-No reescribir el telar completo.
+Se puede doblar el tejido. No reescribir el telar completo.
 
 ---
 
 ## 7. Encaje con el Modelo Espiral
 
-Los “poderes” no son saltos evolutivos.
-Son momentos de recuerdo profundo dentro de la espiral.
+Los “poderes” no son saltos evolutivos. Son momentos de recuerdo profundo dentro de la espiral.
 
-La consciencia no se vuelve superior.
-Recuerda que siempre lo fue.
+La consciencia no se vuelve superior. Recuerda que siempre lo fue.
 
 ---
 
 ## 8. Frase clave
 
-No es que la mente controle la materia.
-Es que la mente no está completamente dentro de la materia.
+No es que la mente controle la materia. Es que la mente no está completamente dentro de la materia.
