@@ -8,7 +8,9 @@ import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import mermaid from 'mermaid';
 import { useEffect, useRef, useState } from 'react';
-import { Check, Copy } from 'lucide-react';
+import { Check, Copy, Clock } from 'lucide-react';
+
+
 
 
 interface MarkdownRendererProps {
@@ -92,7 +94,22 @@ const CopyButton: React.FC<{ text: string }> = ({ text }) => {
     );
 };
 
+const ReadingTime: React.FC<{ content: string }> = ({ content }) => {
+    const wordsPerMinute = 200;
+    const noStaging = content.replace(/!\[.*?\]\(.*?\)/g, ''); // Remove image syntax
+    const words = noStaging.trim().split(/\s+/).length;
+    const minutes = Math.ceil(words / wordsPerMinute);
+
+    return (
+        <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-sm font-medium mb-6">
+            <Clock size={16} />
+            <span>{minutes} {minutes === 1 ? 'minuto' : 'minutos'} de lectura</span>
+        </div>
+    );
+};
+
 const YoutubeEmbed: React.FC<{ url: string }> = ({ url }) => {
+
 
     const getYoutubeId = (url: string) => {
         const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
@@ -141,7 +158,9 @@ const slugify = (text: string) => {
 const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
     return (
         <div className="w-full relative">
+            <ReadingTime content={content} />
             <article className="prose prose-slate dark:prose-invert max-w-none
+
         prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white
         prose-h1:text-3xl prose-h1:mt-8 prose-h1:mb-4
         prose-h2:text-2xl prose-h2:mt-6 prose-h2:mb-3
