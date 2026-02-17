@@ -226,7 +226,24 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                         rehypeSlug // Slug AFTER sanitize ensures IDs are applied to the final safe HTML
                     ]}
                     components={{
-                        p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
+                        p: ({ children }) => {
+                            const isBlock = React.Children.toArray(children).some((child: any) => {
+                                if (React.isValidElement(child)) {
+                                    // Check for block elements
+                                    if (['div', 'figure', 'blockquote', 'table', 'pre', 'section'].includes(child.type as string)) return true;
+                                    // Check for OptimizedImage
+                                    if (child.type === OptimizedImage || (child.props as any)?.node?.tagName === 'img') return true;
+                                    // Check for YoutubeEmbed (it comes as an anchor with specific href)
+                                    if (child.type === 'a' || (child.props as any)?.node?.tagName === 'a') {
+                                        const href = (child.props as any).href;
+                                        const text = extractText((child.props as any).children);
+                                        if (href && (href.includes('youtube.com') || href.includes('youtu.be')) && text === href) return true;
+                                    }
+                                }
+                                return false;
+                            });
+                            return isBlock ? <div className="mb-4 leading-relaxed">{children}</div> : <p className="mb-4 leading-relaxed">{children}</p>;
+                        },
                         blockquote: ({ children }) => {
                             const fullText = extractText(children).trim();
 
