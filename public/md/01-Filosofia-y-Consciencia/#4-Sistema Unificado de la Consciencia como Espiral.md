@@ -2,9 +2,9 @@
 
 ---
 
-# 1. Fundamento Ontológico
+## 1. Fundamento Ontológico
 
-## 1.1 La naturaleza de la consciencia
+### 1.1 La naturaleza de la consciencia
 
 La consciencia es extradimensional desde el inicio.
 Nunca estuvo separada del Todo.
@@ -17,7 +17,7 @@ La materia existe dentro de un campo de consciencia más amplio.
 
 ---
 
-## 1.2 La estructura de la Realidad
+### 1.2 La estructura de la Realidad
 
 La Realidad no es caótica ni arbitraria.
 Está organizada en capas de conciencia y niveles dimensionales.
@@ -34,9 +34,9 @@ pero sí distintos niveles de acceso según el grado de alineación y coherencia
 
 ---
 
-# 2. El Tiempo y la Espiral
+## 2. El Tiempo y la Espiral
 
-## 2.1 La espiral única
+### 2.1 La espiral única
 
 El tiempo no es lineal ni circular.
 
@@ -51,7 +51,7 @@ Existe una sola estructura que contiene todas las posibilidades potenciales.
 
 ---
 
-## 2.2 Evolución como recuerdo
+### 2.2 Evolución como recuerdo
 
 La consciencia no evoluciona.
 Siempre fue completa.
@@ -67,9 +67,9 @@ Es reconexión.
 
 ---
 
-# 3. Libre Albedrío y Poder Creativo
+## 3. Libre Albedrío y Poder Creativo
 
-## 3.1 Qué es realmente crear
+### 3.1 Qué es realmente crear
 
 No creamos desde la nada.
 No generamos nuevas realidades externas al sistema.
@@ -81,7 +81,7 @@ Selecciona configuraciones coherentes dentro de márgenes estructurales.
 
 ---
 
-## 3.2 Libre albedrío
+### 3.2 Libre albedrío
 
 Libre albedrío no es omnipotencia.
 
@@ -98,7 +98,7 @@ la realidad responde con menor resistencia.
 
 ---
 
-## 3.3 Límites estructurales
+### 3.3 Límites estructurales
 
 No podemos crear “lo que queramos”.
 
@@ -114,9 +114,9 @@ No reescribir el telar completo.
 
 ---
 
-# 4. Capas Dimensionales y Fenómenos Extraordinarios
+## 4. Capas Dimensionales y Fenómenos Extraordinarios
 
-## 4.1 Qué es el “higher-self”
+### 4.1 Qué es el “higher-self”
 
 No es una entidad separada.
 
@@ -134,7 +134,7 @@ Es interfaz de alineación.
 
 ---
 
-## 4.2 Qué son realmente los “superpoderes”
+### 4.2 Qué son realmente los “superpoderes”
 
 No son creación.
 No son violación de leyes.
@@ -154,7 +154,7 @@ Pero son efectos de coherencia dimensional.
 
 ---
 
-## 4.3 Qué se entrena realmente
+### 4.3 Qué se entrena realmente
 
 No se entrena potencia.
 Se entrena alineación.
@@ -171,7 +171,7 @@ mayor acceso a capas superiores.
 
 ---
 
-# 5. La Fuente
+## 5. La Fuente
 
 La Fuente no es un ente separado.
 
@@ -187,7 +187,7 @@ La espiral converge hacia la realización consciente de esa unidad.
 
 ---
 
-# 6. Bien, Mal y Neutralidad
+## 6. Bien, Mal y Neutralidad
 
 El universo no impone moral absoluta.
 
@@ -201,7 +201,7 @@ no de castigo o recompensa.
 
 ---
 
-# 7. Síntesis Final
+## 7. Síntesis Final
 
 - La consciencia es extradimensional desde el inicio.
 - La Realidad está organizada en capas de conciencia.

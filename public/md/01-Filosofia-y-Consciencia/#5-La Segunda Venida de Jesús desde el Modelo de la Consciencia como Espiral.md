@@ -2,7 +2,7 @@
 
 ---
 
-# 1. Planteamiento del problema
+## 1. Planteamiento del problema
 
 La “segunda venida de Jesús” suele interpretarse como:
 
@@ -16,7 +16,7 @@ esta interpretación resulta incoherente.
 
 ---
 
-# 2. Punto clave del sistema
+## 2. Punto clave del sistema
 
 En este modelo:
 
@@ -29,7 +29,7 @@ Si esto es así, una intervención externa rompe la lógica interna del sistema.
 
 ---
 
-# 3. Jesús dentro del modelo
+## 3. Jesús dentro del modelo
 
 Jesús no sería una anomalía divina única.
 
@@ -44,9 +44,9 @@ sino una expresión avanzada de la estructura.
 
 ---
 
-# 4. Por qué una segunda venida literal sería absurda
+## 4. Por qué una segunda venida literal sería absurda
 
-## 4.1 Implicaría separación real
+### 4.1 Implicaría separación real
 
 Si Jesús “vuelve desde fuera”:
 
@@ -59,7 +59,7 @@ no existe un “afuera”.
 
 ---
 
-## 4.2 Rompería la coherencia evolutiva
+### 4.2 Rompería la coherencia evolutiva
 
 El modelo establece:
 
@@ -77,7 +77,7 @@ Eso contradice la coherencia estructural del sistema.
 
 ---
 
-## 4.3 Violación de los límites estructurales
+### 4.3 Violación de los límites estructurales
 
 El sistema establece límites:
 
@@ -93,7 +93,7 @@ Eso no encaja con el principio:
 
 ---
 
-# 5. Interpretación coherente alternativa
+## 5. Interpretación coherente alternativa
 
 La “segunda venida” no sería un evento físico.
 
@@ -111,7 +111,7 @@ Emergería una frecuencia.
 
 ---
 
-# 6. La Espiral y los arquetipos
+## 6. La Espiral y los arquetipos
 
 En una espiral única:
 
@@ -127,7 +127,7 @@ Una manifestación equivalente.
 
 ---
 
-# 7. El verdadero absurdo
+## 7. El verdadero absurdo
 
 Lo verdaderamente absurdo, desde este modelo, sería creer que:
 
@@ -140,7 +140,7 @@ Eso contradice el núcleo del sistema.
 
 ---
 
-# 8. Conclusión
+## 8. Conclusión
 
 Desde el Modelo de la Consciencia como Espiral:
 
