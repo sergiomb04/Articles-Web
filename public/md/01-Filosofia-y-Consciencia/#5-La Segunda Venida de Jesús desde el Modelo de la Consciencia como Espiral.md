@@ -1,3 +1,11 @@
+---
+title: La Segunda Venida de Jesús desde el Modelo de la Consciencia como Espiral
+author: Sergio MB.
+date: 2026-02-17
+description: Análisis de por qué una segunda venida literal contradice la coherencia estructural del modelo. El despertar es colectivo, no una intervención externa.
+tags: [jesús, segunda venida, consciencia, espiral, despertar colectivo, arquetipos]
+---
+
 ## Tabla de Contenidos
 
 ---

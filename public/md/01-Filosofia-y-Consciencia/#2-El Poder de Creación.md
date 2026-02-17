@@ -1,3 +1,11 @@
+---
+title: El Poder de Creación
+author: Sergio MB.
+date: 2026-01-25
+description: No creamos desde cero, recordamos y alineamos. Descubre cómo el poder creativo es sintonización con posibilidades ya existentes en la espiral.
+tags: [creación, libre albedrío, alineación, coherencia, manifestación]
+---
+
 ## Tabla de Contenidos
 
 ---

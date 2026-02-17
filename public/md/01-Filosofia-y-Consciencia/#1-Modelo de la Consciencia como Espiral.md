@@ -1,3 +1,11 @@
+---
+title: Modelo de la Consciencia como Espiral
+author: Sergio MB.
+date: 2026-02-16
+description: La consciencia es extradimensional desde el inicio. Explora cómo la realidad se estructura en capas y cómo la evolución es recuerdo, no creación.
+tags: [consciencia, filosofía, espiral, dimensiones, evolución]
+---
+
 ## Tabla de Contenidos
 
 ---

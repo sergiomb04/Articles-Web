@@ -1,3 +1,11 @@
+---
+title: Sistema Unificado de la Consciencia como Espiral
+author: Sergio MB.
+date: 2026-02-17
+description: Síntesis completa del modelo filosófico que integra consciencia extradimensional, libre albedrío, poder creativo y fenómenos extraordinarios.
+tags: [consciencia, espiral, filosofía, sistema unificado, ontología, dimensiones]
+---
+
 ## Tabla de Contenidos
 
 ---

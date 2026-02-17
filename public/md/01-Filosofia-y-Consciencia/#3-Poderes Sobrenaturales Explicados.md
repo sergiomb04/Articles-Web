@@ -1,3 +1,11 @@
+---
+title: Poderes Sobrenaturales Explicados
+author: Sergio MB.
+date: 2026-01-25
+description: Los superpoderes no son creación ni violación de leyes. Son alineación profunda con capas superiores de la realidad dimensional.
+tags: [superpoderes, higher-self, dimensiones, coherencia, telequinesis]
+---
+
 ## Tabla de Contenidos
 
 ---
