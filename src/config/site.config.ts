@@ -15,10 +15,10 @@ export interface SiteConfig {
     };
     theme: {
         /**
-         * Default theme mode when user visits for the first time
+         * Default theme mode when a user visits for the first time
          * - 'light': Always start in light mode
          * - 'dark': Always start in dark mode
-         * - 'system': Use system preference
+         * - 'system': Use the system preference
          */
         defaultMode: ThemeMode;
         /**
@@ -99,8 +99,8 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
     branding: {
         name: 'ArticlesWeb',
-        tagline: 'Tu biblioteca de conocimiento',
-        description: 'Sistema dinámico de artículos en Markdown con soporte completo para GFM, Mermaid, KaTeX y más.',
+        tagline: 'Your knowledge library',
+        description: 'Dynamic Markdown article system with full support for GFM, Mermaid, KaTeX, and more.',
     },
     theme: {
         defaultMode: 'dark',
@@ -135,23 +135,23 @@ export const siteConfig: SiteConfig = {
     },
     content: {
         home: {
-            title: 'Biblioteca de Artículos',
-            subtitle: 'Explora y lee artículos dinámicos renderizados directamente desde Markdown.',
+            title: 'Article Library',
+            subtitle: 'Explore and read dynamic articles rendered directly from Markdown.',
             itemLabels: {
-                folder: '📂 Categoría • Ver carpeta',
-                article: '📄 Artículo • Leer ahora',
+                folder: '📂 Category • View folder',
+                article: '📄 Article • Read now',
             },
         },
         article: {
             backButton: {
-                toHome: 'Volver al inicio',
-                toParent: 'Volver atrás',
+                toHome: 'Back to home',
+                toParent: 'Go back',
             },
             navigation: {
-                previous: 'Anterior',
-                next: 'Siguiente',
+                previous: 'Previous',
+                next: 'Next',
             },
-            folderSubtitle: 'Explora el contenido de esta categoría.',
+            folderSubtitle: 'Explore the content of this category.',
         },
         footer: {
             text: 'Articles Web',
@@ -162,15 +162,15 @@ export const siteConfig: SiteConfig = {
     },
     ui: {
         search: {
-            placeholder: 'Buscar artículos... (Esc para salir)',
-            noResults: 'No se encontraron resultados para',
-            minCharacters: 'Escribe al menos 2 caracteres para buscar...',
-            tooltip: 'Buscar (Cmd+K)',
-            resultsCount: 'resultados encontrados',
+            placeholder: 'Search articles... (Esc to close)',
+            noResults: 'No results found for',
+            minCharacters: 'Type at least 2 characters to search...',
+            tooltip: 'Search (Cmd+K)',
+            resultsCount: 'results found',
         },
         buttons: {
-            print: 'Exportar a PDF',
-            toggleTheme: 'Cambiar tema',
+            print: 'Export to PDF',
+            toggleTheme: 'Toggle theme',
         },
     },
 };
