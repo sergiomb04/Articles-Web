@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+@variant dark (&:where(.dark, .dark *));
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+  --color-slate-900: #0f172a;
+  --color-slate-50: #f8fafc;
+
+  --foreground: var(--color-slate-800);
+  --background: var(--color-slate-50);
+}
+
+@layer base {
+  :root {
+    --foreground-rgb: 30, 41, 59;
+    --background-start-rgb: 248, 250, 252;
+    --background-end-rgb: 255, 255, 255;
+  }
+
+  .dark {
+    --foreground-rgb: 241, 245, 249;
+    --background-start-rgb: 15, 23, 42;
+    --background-end-rgb: 15, 23, 42;
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: rgb(var(--background-start-rgb));
+    min-height: 100vh;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 100px;
+    transition: background-color 0.3s ease;
+  }
+}
+
+/* TOC and smooth scroll adjustments */
+.prose a {
+  text-decoration: none !important;
+}
+
+.prose a:hover {
+  text-decoration: underline !important;
+}
+
+.toc-list ul {
+  list-style-type: none !important;
+  padding-left: 1.5rem !important;
+}
+
+/* Custom prose overrides */
+.prose {
+  --tw-prose-headings: theme('colors.slate.900');
+  --tw-prose-links: theme('colors.blue.600');
+}
+
+.dark .prose {
+  --tw-prose-body: theme('colors.slate.300');
+  --tw-prose-headings: theme('colors.white');
+  --tw-prose-links: theme('colors.blue.400');
+  --tw-prose-code: theme('colors.blue.300');
+  --tw-prose-pre-bg: theme('colors.slate.800');
+}
+
+.prose pre code {
+  background-color: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+}

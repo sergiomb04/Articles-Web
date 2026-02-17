@@ -1,0 +1,240 @@
+import { GetStaticPaths, GetStaticProps } from 'next';
+import Head from 'next/head';
+import Link from 'next/link';
+import fs from 'fs';
+import path from 'path';
+import MarkdownRenderer from '@/components/MarkdownRenderer';
+
+interface ArticleInfo {
+    slug: string;
+    title: string;
+    isDir: boolean;
+}
+
+interface NavItem {
+    slug: string;
+    title: string;
+}
+
+interface ArticlePageProps {
+    content?: string;
+    slug: string[];
+    isDir: boolean;
+    items?: ArticleInfo[];
+    prev?: NavItem | null;
+    next?: NavItem | null;
+}
+
+// Helper to strip sorting prefixes for display and URLs
+const cleanSlug = (s: string) => s.replace(/^(#?\d+-)/, '');
+const cleanTitle = (s: string) => s.replace('.md', '').replace(/^(#?\d+-)/, '').replace(/-/g, ' ').trim();
+
+export default function ArticlePage({ content, slug, isDir, items, prev, next }: ArticlePageProps) {
+    const rawTitle = slug[slug.length - 1];
+    const title = cleanTitle(rawTitle);
+
+    return (
+        <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
+            <Head>
+                <title>{`${title.charAt(0).toUpperCase() + title.slice(1)} | Article Reader`}</title>
+            </Head>
+
+            <header className="border-b border-slate-200/50 dark:border-slate-800/50 py-4 px-6 fixed top-0 w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl z-20">
+                <div className="max-w-4xl mx-auto flex justify-between items-center">
+                    <Link href="/" className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+                        ArticleReader
+                    </Link>
+                    <button
+                        onClick={() => {
+                            if (typeof document !== 'undefined') {
+                                document.documentElement.classList.toggle('dark');
+                            }
+                        }}
+                        className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700"
+                        aria-label="Toggle dark mode"
+                    >
+                        🌓
+                    </button>
+                </div>
+            </header>
+
+            <main className="pt-20">
+                <div className="max-w-4xl mx-auto px-6 py-12">
+                    <div className="mb-12">
+                        <Link href={slug.length > 1 ? `/${slug.slice(0, -1).join('/')}` : "/"} className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline mb-4 inline-block">
+                            ← {slug.length > 1 ? "Volver atrás" : "Volver al inicio"}
+                        </Link>
+                        <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white capitalize mb-4">
+                            {title}
+                        </h1>
+                        {isDir && (
+                            <p className="text-lg text-slate-600 dark:text-slate-400">
+                                Explora el contenido de esta categoría.
+                            </p>
+                        )}
+                    </div>
+
+                    {isDir ? (
+                        <div className="grid gap-6">
+                            {items?.map((item) => (
+                                <Link
+                                    key={item.slug}
+                                    href={`/${slug.join('/')}/${item.slug}`}
+                                    className="group block p-6 bg-white dark:bg-slate-800 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-400 transition-all hover:shadow-xl hover:-translate-y-1"
+                                >
+                                    <div className="flex items-center justify-between">
+                                        <div>
+                                            <h2 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors capitalize">
+                                                {item.title}
+                                            </h2>
+                                            <p className="mt-2 text-slate-500 dark:text-slate-400">
+                                                {item.isDir ? "📂 Categoría" : "📄 Artículo"}
+                                            </p>
+                                        </div>
+                                        <span className="text-slate-300 group-hover:text-blue-500 transition-colors text-2xl">→</span>
+                                    </div>
+                                </Link>
+                            ))}
+                        </div>
+                    ) : (
+                        <>
+                            <MarkdownRenderer content={content || ''} />
+
+                            <div className="mt-16 flex flex-col sm:flex-row justify-between gap-4 border-t border-slate-200 dark:border-slate-800 pt-8">
+                                {prev ? (
+                                    <Link
+                                        href={`/${slug.slice(0, -1).concat(prev.slug).join('/')}`}
+                                        className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group"
+                                    >
+                                        <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Anterior</span>
+                                        <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">{prev.title}</p>
+                                    </Link>
+                                ) : <div className="flex-1" />}
+
+                                {next ? (
+                                    <Link
+                                        href={`/${slug.slice(0, -1).concat(next.slug).join('/')}`}
+                                        className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group text-right"
+                                    >
+                                        <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Siguiente</span>
+                                        <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">{next.title}</p>
+                                    </Link>
+                                ) : <div className="flex-1" />}
+                            </div>
+                        </>
+                    )}
+                </div>
+            </main>
+
+            <footer className="py-8 text-center text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-900 mt-12">
+                <p>© 2026 Article Reader - {slug.map(cleanSlug).join(' / ')}</p>
+            </footer>
+        </div>
+    );
+}
+
+function getAllPaths(dir: string, baseDir: string = ''): string[][] {
+    const files = fs.readdirSync(dir);
+    let paths: string[][] = [];
+
+    files.forEach(file => {
+        const fullPath = path.join(dir, file);
+        const relPath = path.join(baseDir, file);
+        const stat = fs.statSync(fullPath);
+
+        if (stat.isDirectory()) {
+            paths.push(relPath.split(path.sep).map(cleanSlug));
+            paths = paths.concat(getAllPaths(fullPath, relPath));
+        } else if (file.endsWith('.md')) {
+            paths.push(relPath.replace('.md', '').split(path.sep).map(cleanSlug));
+        }
+    });
+
+    return paths;
+}
+
+export const getStaticPaths: GetStaticPaths = async () => {
+    const mdDir = path.join(process.cwd(), 'public/md');
+    if (!fs.existsSync(mdDir)) return { paths: [], fallback: false };
+
+    const allPaths = getAllPaths(mdDir);
+    const paths = allPaths.map(p => ({ params: { slug: p } }));
+
+    return { paths, fallback: false };
+};
+
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const slug = params?.slug as string[];
+    console.log('[getStaticProps] Checking slug:', slug);
+    const mdDir = path.join(process.cwd(), 'public/md');
+
+    // Find the actual file path by matching clean slugs
+    let currentActualPath = mdDir;
+    const actualSlugParts: string[] = [];
+
+    for (const part of slug) {
+        const items = fs.readdirSync(currentActualPath);
+        const match = items.find(item => cleanSlug(item.replace('.md', '')) === part);
+        if (!match) return { notFound: true };
+        currentActualPath = path.join(currentActualPath, match);
+        actualSlugParts.push(match);
+    }
+
+    const isDir = fs.statSync(currentActualPath).isDirectory();
+
+    if (isDir) {
+        const items = fs.readdirSync(currentActualPath).map(file => {
+            const itemPath = path.join(currentActualPath, file);
+            const itemIsDir = fs.statSync(itemPath).isDirectory();
+            if (!itemIsDir && !file.endsWith('.md')) return null;
+
+            return {
+                slug: cleanSlug(itemIsDir ? file : file.replace('.md', '')),
+                title: cleanTitle(file),
+                isDir: itemIsDir,
+                rawName: file
+            };
+        }).filter(Boolean) as (ArticleInfo & { rawName: string })[];
+
+        items.sort((a, b) => a.rawName.localeCompare(b.rawName, undefined, { numeric: true, sensitivity: 'base' }));
+
+        return {
+            props: {
+                slug,
+                isDir: true,
+                items: items.map(({ rawName, ...rest }) => rest)
+            }
+        };
+    } else {
+        const content = fs.readFileSync(currentActualPath, 'utf8');
+
+        // Get navigation
+        const parentDir = path.dirname(currentActualPath);
+        const siblings = fs.readdirSync(parentDir).map(file => {
+            const p = path.join(parentDir, file);
+            const itemIsDir = fs.statSync(p).isDirectory();
+            if (itemIsDir || !file.endsWith('.md')) return null;
+            return {
+                slug: cleanSlug(file.replace('.md', '')),
+                title: cleanTitle(file),
+                rawName: file
+            };
+        }).filter(Boolean) as (NavItem & { rawName: string })[];
+
+        siblings.sort((a, b) => a.rawName.localeCompare(b.rawName, undefined, { numeric: true, sensitivity: 'base' }));
+
+        const currentIndex = siblings.findIndex(s => s.rawName === path.basename(currentActualPath));
+        const prev = currentIndex > 0 ? { slug: siblings[currentIndex - 1].slug, title: siblings[currentIndex - 1].title } : null;
+        const next = currentIndex < siblings.length - 1 ? { slug: siblings[currentIndex + 1].slug, title: siblings[currentIndex + 1].title } : null;
+
+        return {
+            props: {
+                content,
+                slug,
+                isDir: false,
+                prev,
+                next
+            },
+        };
+    }
+};
