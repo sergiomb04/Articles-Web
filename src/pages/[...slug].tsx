@@ -269,7 +269,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
                                         className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group"
                                     >
                                         <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Anterior</span>
-                                        <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">{prev.title}</p>
+                                        <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1 capitalize">{prev.title}</p>
                                     </Link>
                                 ) : <div className="flex-1" />}
 
@@ -279,7 +279,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
                                         className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group text-right"
                                     >
                                         <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Siguiente</span>
-                                        <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1">{next.title}</p>
+                                        <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1 capitalize">{next.title}</p>
                                     </Link>
                                 ) : <div className="flex-1" />}
                             </div>
