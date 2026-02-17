@@ -125,6 +125,37 @@ const YoutubeEmbed: React.FC<{ url: string }> = ({ url }) => {
     );
 };
 
+const OptimizedImage: React.FC<{ src: any; alt?: string }> = ({ src, alt }) => {
+    const [isOpen, setIsOpen] = useState(false);
+    if (!src) return null;
+    const safeSrc = typeof src === 'string' ? src : '';
+
+    return (
+        <>
+            <figure className="my-12">
+                <div className="relative group cursor-zoom-in" onClick={() => setIsOpen(true)}>
+                    <div className="relative w-full aspect-video overflow-hidden rounded-2xl shadow-2xl border-4 border-white dark:border-slate-800">
+                        <Image src={safeSrc} alt={alt || ''} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
+                    </div>
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 rounded-2xl">
+                        <div className="bg-white/90 dark:bg-slate-900/90 p-3 rounded-full shadow-xl"><Maximize2 size={24} /></div>
+                    </div>
+                </div>
+                {alt && <figcaption className="text-center text-sm text-slate-500 mt-5 italic font-medium">{alt}</figcaption>}
+            </figure>
+            {isOpen && (
+                <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4" onClick={() => setIsOpen(false)}>
+                    <button className="absolute top-6 right-6 p-3 text-white" onClick={() => setIsOpen(false)}><X size={32} /></button>
+                    <div className="relative w-full h-full max-w-[90vw] max-h-[80vh]">
+                        <Image src={safeSrc} alt={alt || ''} fill className="object-contain" />
+                    </div>
+                    {alt && <span className="absolute bottom-10 text-white bg-black/50 px-6 py-2 rounded-full">{alt}</span>}
+                </div>
+            )}
+        </>
+    );
+};
+
 // --- Utils ---
 
 const extractText = (node: any): string => {
@@ -154,7 +185,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                 }
             `}</style>
             <ReadingTime content={content} />
-            <article className="prose prose-slate dark:prose-invert max-w-none
+            <article className={`prose prose-slate dark:prose-invert max-w-none
                 prose-headings:font-bold prose-headings:text-slate-900 dark:prose-headings:text-white
                 prose-h1:text-3xl prose-h1:mt-8 prose-h1:mb-4
                 prose-h2:text-2xl prose-h2:mt-6 prose-h2:mb-3
@@ -167,7 +198,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                 prose-img:rounded-xl prose-img:mx-auto prose-img:shadow-xl
                 prose-pre:bg-[#0d1117] dark:prose-pre:bg-[#0d1117] prose-pre:rounded-xl prose-pre:border prose-pre:border-slate-800/50
                 prose-blockquote:border-l-4 prose-blockquote:border-slate-300 dark:prose-blockquote:border-slate-600 prose-blockquote:bg-slate-50/50 dark:prose-blockquote:bg-slate-800/10 prose-blockquote:px-8 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:my-8
-            " id="article-content">
+            `} id="article-content">
                 <ReactMarkdown
                     remarkPlugins={[remarkGfm, remarkMath, [remarkToc, { heading: 'Tabla de Contenidos', tight: true, maxDepth: 3 }]]}
                     rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeKatex, [rehypeSanitize, {
@@ -246,36 +277,10 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                             if (!className || !className.startsWith('language-')) return <code className="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm text-pink-600 dark:text-pink-400 font-mono">{children}</code>;
                             return <code className={`${className} bg-transparent p-0`}>{children}</code>;
                         },
-                        img: ({ src, alt }) => {
-                            const [isOpen, setIsOpen] = useState(false);
-                            if (!src) return null;
-                            return (
-                                <>
-                                    <figure className="my-12">
-                                        <div className="relative group cursor-zoom-in" onClick={() => setIsOpen(true)}>
-                                            <div className="relative w-full aspect-video overflow-hidden rounded-2xl shadow-2xl border-4 border-white dark:border-slate-800">
-                                                <Image src={src} alt={alt || ''} fill className="object-cover" sizes="(max-width: 768px) 100vw, 50vw" />
-                                            </div>
-                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20 rounded-2xl">
-                                                <div className="bg-white/90 dark:bg-slate-900/90 p-3 rounded-full shadow-xl"><Maximize2 size={24} /></div>
-                                            </div>
-                                        </div>
-                                        {alt && <figcaption className="text-center text-sm text-slate-500 mt-5 italic font-medium">{alt}</figcaption>}
-                                    </figure>
-                                    {isOpen && (
-                                        <div className="fixed inset-0 z-[100] bg-black/90 flex items-center justify-center p-4" onClick={() => setIsOpen(false)}>
-                                            <button className="absolute top-6 right-6 p-3 text-white" onClick={() => setIsOpen(false)}><X size={32} /></button>
-                                            <div className="relative w-full h-full max-w-[90vw] max-h-[80vh]">
-                                                <Image src={src} alt={alt || ''} fill className="object-contain" />
-                                            </div>
-                                            {alt && <span className="absolute bottom-10 text-white bg-black/50 px-6 py-2 rounded-full">{alt}</span>}
-                                        </div>
-                                    )}
-                                </>
-                            );
-                        },
+                        img: ({ src, alt }) => <OptimizedImage src={src} alt={alt} />,
                         a: ({ href, children }) => {
-                            if (href && (href.includes('youtube.com') || href.includes('youtu.be')) && children === href) return <YoutubeEmbed url={href} />;
+                            const text = extractText(children);
+                            if (href && (href.includes('youtube.com') || href.includes('youtu.be')) && text === href) return <YoutubeEmbed url={href} />;
                             return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
                         }
                     }}
