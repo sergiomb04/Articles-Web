@@ -7,7 +7,9 @@ import rehypeHighlight from 'rehype-highlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import mermaid from 'mermaid';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Check, Copy } from 'lucide-react';
+
 
 interface MarkdownRendererProps {
     content: string;
@@ -61,7 +63,37 @@ const Mermaid: React.FC<{ chart: string }> = ({ chart }) => {
     );
 };
 
+const CopyButton: React.FC<{ text: string }> = ({ text }) => {
+    const [copied, setCopied] = useState(false);
+
+    const handleCopy = async () => {
+        try {
+            await navigator.clipboard.writeText(text);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy text: ', err);
+        }
+    };
+
+    return (
+        <button
+            onClick={handleCopy}
+            className="absolute top-4 right-4 p-2 rounded-lg bg-slate-800/50 hover:bg-slate-700/50 text-slate-400 hover:text-white transition-all border border-slate-700/50 z-10"
+            title="Copiar código"
+        >
+            {copied ? <Check size={16} className="text-emerald-400" /> : <Copy size={16} />}
+            {copied && (
+                <span className="absolute right-full mr-2 top-1/2 -translate-y-1/2 bg-slate-800 text-white text-[10px] font-bold py-1 px-2 rounded opacity-0 animate-in fade-in slide-in-from-right-1 duration-200 fill-mode-forwards pointer-events-none">
+                    ¡COPIADO!
+                </span>
+            )}
+        </button>
+    );
+};
+
 const YoutubeEmbed: React.FC<{ url: string }> = ({ url }) => {
+
     const getYoutubeId = (url: string) => {
         const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|&v=)([^#&?]*).*/;
         const match = url.match(regExp);
@@ -169,7 +201,18 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                             return <blockquote>{children}</blockquote>;
                         },
                         // Improved pre/code rendering to avoid layout shifts and fix contrast
-                        pre: ({ children }) => <pre className="overflow-x-auto rounded-xl shadow-2xl bg-[#0d1117] p-8 my-10">{children}</pre>,
+                        pre: ({ children }) => {
+                            const codeText = extractText(children);
+                            return (
+                                <div className="group relative">
+                                    <CopyButton text={codeText} />
+                                    <pre className="overflow-x-auto rounded-xl shadow-2xl bg-[#0d1117] p-8 my-10 border border-slate-800/50">
+                                        {children}
+                                    </pre>
+                                </div>
+                            );
+                        },
+
                         code: (props) => {
                             const { className, children } = props;
                             const isMermaid = className?.includes('language-mermaid');
