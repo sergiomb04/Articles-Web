@@ -1,172 +1,175 @@
-# Guía de Configuración - Articles-Web
+# Configuration Guide -- Articles-Web
 
-Esta guía explica cómo personalizar tu instalación de Articles-Web mediante el sistema de configuración centralizado.
+This guide explains how to customize your Articles-Web installation
+using the centralized configuration system.
 
-## 📍 Ubicación del Archivo de Configuración
+## 📍 Configuration File Location
 
-El archivo de configuración se encuentra en:
-```
-src/config/site.config.ts
-```
+The configuration file is located at:
 
-## 🎨 Opciones de Configuración
+    src/config/site.config.ts
 
-### 1. Branding (Marca)
+## 🎨 Configuration Options
 
-Personaliza el nombre y descripción de tu sitio:
+### 1. Branding
 
-```typescript
+Customize your site's name and description:
+
+``` typescript
 branding: {
-  name: 'ArticleReader',              // Nombre del sitio (aparece en header y títulos)
-  tagline: 'Tu biblioteca de conocimiento',  // Eslogan
-  description: 'Sistema dinámico de artículos...',  // Descripción general
+  name: 'ArticleReader',              // Site name (appears in header and titles)
+  tagline: 'Your knowledge library',  // Tagline
+  description: 'Dynamic article system...',  // General description
 }
 ```
 
-**Dónde aparece:**
-- `name`: Header, títulos de página, meta tags
-- `tagline`: Puede usarse en páginas personalizadas
-- `description`: Meta tags y SEO
+**Where it appears:** - `name`: Header, page titles, meta tags -
+`tagline`: Can be used on custom pages - `description`: Meta tags and
+SEO
 
----
+------------------------------------------------------------------------
 
-### 2. Tema (Theme)
+### 2. Theme
 
-Configura el tema predeterminado y colores:
+Configure the default theme and colors:
 
-```typescript
+``` typescript
 theme: {
-  defaultMode: 'light',  // Opciones: 'light', 'dark', 'system'
+  defaultMode: 'light',  // Options: 'light', 'dark', 'system'
   colors: {
     primary: {
-      light: 'blue-600',   // Color primario en modo claro
-      dark: 'blue-400',    // Color primario en modo oscuro
+      light: 'blue-600',   // Primary color in light mode
+      dark: 'blue-400',    // Primary color in dark mode
     },
-    // ... más colores
+    // ... more colors
   }
 }
 ```
 
-**Opciones de `defaultMode`:**
-- `'light'`: Siempre inicia en modo claro
-- `'dark'`: Siempre inicia en modo oscuro
-- `'system'`: Usa la preferencia del sistema operativo
+**`defaultMode` options:** - `'light'`: Always start in light mode -
+`'dark'`: Always start in dark mode - `'system'`: Use the operating
+system preference
 
-**Nota sobre colores:** Actualmente los colores están documentados pero requieren modificaciones adicionales en las clases de Tailwind CSS para aplicarse completamente. Los valores de texto y UI sí se aplican automáticamente.
+**Note on colors:** Colors are currently documented but require
+additional Tailwind CSS class modifications to be fully applied. Text
+and UI values are applied automatically.
 
----
+------------------------------------------------------------------------
 
-### 3. Contenido (Content)
+### 3. Content
 
-Personaliza todos los textos de la interfaz:
+Customize all interface texts:
 
-#### Página de Inicio
-```typescript
+#### Home Page
+
+``` typescript
 content: {
   home: {
-    title: 'Biblioteca de Artículos',
-    subtitle: 'Explora y lee artículos dinámicos...',
+    title: 'Article Library',
+    subtitle: 'Explore and read dynamic articles rendered directly from Markdown.',
     itemLabels: {
-      folder: '📂 Categoría • Ver carpeta',
-      article: '📄 Artículo • Leer ahora',
+      folder: '📂 Category • View folder',
+      article: '📄 Article • Read now',
     },
   },
   // ...
 }
 ```
 
-#### Páginas de Artículos
-```typescript
+#### Article Pages
+
+``` typescript
 article: {
   backButton: {
-    toHome: 'Volver al inicio',
-    toParent: 'Volver atrás',
+    toHome: 'Back to home',
+    toParent: 'Go back',
   },
   navigation: {
-    previous: 'Anterior',
-    next: 'Siguiente',
+    previous: 'Previous',
+    next: 'Next',
   },
-  folderSubtitle: 'Explora el contenido de esta categoría.',
+  folderSubtitle: 'Explore the content of this category.',
 }
 ```
 
 #### Footer
-```typescript
+
+``` typescript
 footer: {
   text: 'Article Reader',
   year: 2026,
-  showPath: true,  // Mostrar la ruta actual en el footer
+  showPath: true,  // Show the current path in the footer
 }
 ```
 
-**Resultado del footer:**
-- Con `showPath: true`: `© 2026 Article Reader - ruta/del/articulo`
-- Con `showPath: false`: `© 2026 Article Reader`
+**Footer result:** - With `showPath: true`:
+`© 2026 Article Reader - path/to/article` - With `showPath: false`:
+`© 2026 Article Reader`
 
----
+------------------------------------------------------------------------
 
-### 4. UI (Interfaz de Usuario)
+### 4. UI (User Interface)
 
-Personaliza textos de búsqueda y botones:
+Customize search texts and buttons:
 
-```typescript
+``` typescript
 ui: {
   search: {
-    placeholder: 'Buscar artículos... (Esc para salir)',
-    noResults: 'No se encontraron resultados para',
-    minCharacters: 'Escribe al menos 2 caracteres para buscar...',
-    tooltip: 'Buscar (Cmd+K)',
-    resultsCount: 'resultados encontrados',
+    placeholder: 'Search articles... (Esc to close)',
+    noResults: 'No results found for',
+    minCharacters: 'Type at least 2 characters to search...',
+    tooltip: 'Search (Cmd+K)',
+    resultsCount: 'results found',
   },
   buttons: {
-    print: 'Exportar a PDF',
-    toggleTheme: 'Cambiar tema',
+    print: 'Export to PDF',
+    toggleTheme: 'Toggle theme',
   },
 }
 ```
 
----
+------------------------------------------------------------------------
 
-## 🚀 Ejemplos de Personalización
+## 🚀 Customization Examples
 
-### Ejemplo 1: Cambiar a Tema Oscuro por Defecto
+### Example 1: Switch to Dark Mode by Default
 
-```typescript
+``` typescript
 theme: {
-  defaultMode: 'dark',  // Cambia de 'light' a 'dark'
-  // ... resto de la configuración
+  defaultMode: 'dark',  // Change from 'light' to 'dark'
+  // ... rest of the configuration
 }
 ```
 
-### Ejemplo 2: Personalizar para un Blog Personal
+### Example 2: Customize for a Personal Blog
 
-```typescript
+``` typescript
 branding: {
-  name: 'Mi Blog Tech',
-  tagline: 'Aprendiendo y compartiendo conocimiento',
-  description: 'Blog personal sobre desarrollo web y tecnología',
+  name: 'My Tech Blog',
+  tagline: 'Learning and sharing knowledge',
+  description: 'Personal blog about web development and technology',
 }
 
 content: {
   home: {
-    title: 'Últimas Publicaciones',
-    subtitle: 'Artículos sobre desarrollo, diseño y tecnología',
+    title: 'Latest Posts',
+    subtitle: 'Articles about development, design, and technology',
     itemLabels: {
-      folder: '📚 Serie • Ver todos',
-      article: '📝 Post • Leer más',
+      folder: '📚 Series • View all',
+      article: '📝 Post • Read more',
     },
   },
   footer: {
-    text: 'Mi Blog Tech',
+    text: 'My Tech Blog',
     year: 2026,
-    showPath: false,  // No mostrar ruta en el footer
+    showPath: false,
   },
 }
 ```
 
-### Ejemplo 3: Sitio en Inglés
+### Example 3: English Website
 
-```typescript
+``` typescript
 content: {
   home: {
     title: 'Article Library',
@@ -209,56 +212,65 @@ ui: {
 }
 ```
 
----
+------------------------------------------------------------------------
 
-## 🔧 Funciones Helper
+## 🔧 Helper Functions
 
-El archivo de configuración incluye funciones helper para facilitar el uso:
+The configuration file includes helper functions to simplify usage:
 
 ### `getPageTitle(pageTitle?: string)`
-Genera títulos de página consistentes:
-```typescript
-// Sin argumento: "ArticleReader"
-// Con argumento: "Mi Artículo | ArticleReader"
-getPageTitle('Mi Artículo')
+
+Generates consistent page titles:
+
+``` typescript
+// Without argument: "ArticleReader"
+// With argument: "My Article | ArticleReader"
+getPageTitle('My Article')
 ```
 
 ### `getFooterText(path?: string)`
-Genera el texto del footer:
-```typescript
-// Sin path: "© 2026 Article Reader"
-// Con path: "© 2026 Article Reader - mi/ruta"
-getFooterText('mi/ruta')
+
+Generates the footer text:
+
+``` typescript
+// Without path: "© 2026 Article Reader"
+// With path: "© 2026 Article Reader - my/path"
+getFooterText('my/path')
 ```
 
----
+------------------------------------------------------------------------
 
-## 💡 Consejos
+## 💡 Tips
 
-1. **Haz cambios incrementales**: Modifica una sección a la vez y verifica los resultados
-2. **Mantén la consistencia**: Usa el mismo tono y estilo en todos los textos
-3. **Prueba en ambos temas**: Verifica que tus cambios se vean bien en modo claro y oscuro
-4. **Guarda copias**: Antes de hacer cambios grandes, guarda una copia del archivo original
+1.  **Make incremental changes**: Modify one section at a time and
+    verify results
+2.  **Keep consistency**: Use the same tone and style across all texts
+3.  **Test both themes**: Ensure your changes look good in light and
+    dark mode
+4.  **Keep backups**: Before making major changes, save a copy of the
+    original file
 
----
+------------------------------------------------------------------------
 
-## 🔄 Aplicar Cambios
+## 🔄 Applying Changes
 
-Después de modificar `site.config.ts`:
+After modifying `site.config.ts`:
 
-1. Guarda el archivo
-2. El servidor de desarrollo (`npm run dev`) recargará automáticamente
-3. Refresca tu navegador para ver los cambios
+1.  Save the file
+2.  The development server (`npm run dev`) will reload automatically
+3.  Refresh your browser to see the changes
 
-**Nota:** Los cambios en el tema predeterminado solo afectan a nuevos visitantes o después de limpiar localStorage.
+**Note:** Changes to the default theme only affect new visitors or after
+clearing localStorage.
 
----
+------------------------------------------------------------------------
 
-## 🎯 Próximos Pasos
+## 🎯 Next Steps
 
-- Personaliza los colores según tu marca
-- Ajusta los textos a tu audiencia
-- Configura el tema predeterminado según tus preferencias
-- Considera traducir todo el contenido si tu audiencia habla otro idioma
+-   Customize colors to match your brand
+-   Adjust texts for your audience
+-   Configure the default theme based on your preference
+-   Consider translating all content if your audience speaks another
+    language
 
-¡Disfruta personalizando tu Articles-Web! 🚀
+Enjoy customizing your Articles-Web! 🚀
