@@ -95,7 +95,7 @@ const Accordion: React.FC<{ title: string; children: React.ReactNode }> = ({ tit
                 <span>{title}</span>
                 {isOpen ? <ChevronDown size={20} /> : <ChevronRight size={20} />}
             </button>
-            <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[2000px] border-t p-6' : 'max-h-0'}`}>{children}</div>
+            <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-[2000px] border-t border-slate-200 dark:border-slate-800 p-6' : 'max-h-0'}`}>{children}</div>
         </div>
     );
 };
