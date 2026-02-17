@@ -5,6 +5,7 @@ date: 2026-02-17
 tags: [documentacion, master-guide, sistema, markdown]
 description: Una guía exhaustiva que cubre todas las capacidades técnicas e interactivas del renderizador de artículos.
 ---
+## Tabla de Contenidos
 
 # 🚀 Guía Completa de Funcionalidades
 
