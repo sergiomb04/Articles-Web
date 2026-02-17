@@ -7,6 +7,7 @@ import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeSlug from 'rehype-slug';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 import mermaid from 'mermaid';
 import { Check, Copy, Clock, ChevronDown, ChevronRight, Maximize2, X } from 'lucide-react';
@@ -166,9 +167,6 @@ const extractText = (node: any): string => {
     return '';
 };
 
-const slugify = (text: string) => {
-    return text.toLowerCase().trim().replace(/\s+/g, '-').replace(/[^\w\s\u00A0-\u017F-]/g, '').replace(/-+/g, '-').replace(/^-+|-+$/g, '');
-};
 
 // --- Main Renderer ---
 
@@ -201,7 +199,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
             `} id="article-content">
                 <ReactMarkdown
                     remarkPlugins={[remarkGfm, remarkMath, [remarkToc, { heading: 'Tabla de Contenidos', tight: true, maxDepth: 3 }]]}
-                    rehypePlugins={[rehypeRaw, rehypeHighlight, rehypeKatex, [rehypeSanitize, {
+                    rehypePlugins={[rehypeRaw, rehypeSlug, rehypeHighlight, rehypeKatex, [rehypeSanitize, {
                         ...defaultSchema,
                         tagNames: [...(defaultSchema.tagNames || []), 'iframe', 'div', 'section', 'style', 'figure', 'figcaption'],
                         attributes: {
@@ -215,9 +213,6 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                         }
                     }]]}
                     components={{
-                        h1: ({ children }) => <h1 id={slugify(extractText(children))}>{children}</h1>,
-                        h2: ({ children }) => <h2 id={slugify(extractText(children))}>{children}</h2>,
-                        h3: ({ children }) => <h3 id={slugify(extractText(children))}>{children}</h3>,
                         p: ({ children }) => {
                             const isBlock = React.Children.toArray(children).some((child: any) =>
                                 React.isValidElement(child) && ['div', 'figure', 'blockquote', 'table', 'pre', 'section'].includes(child.type as string)
@@ -281,7 +276,17 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                         a: ({ href, children }) => {
                             const text = extractText(children);
                             if (href && (href.includes('youtube.com') || href.includes('youtu.be')) && text === href) return <YoutubeEmbed url={href} />;
-                            return <a href={href} target="_blank" rel="noopener noreferrer">{children}</a>;
+
+                            const isExternal = href?.startsWith('http');
+                            return (
+                                <a
+                                    href={href}
+                                    target={isExternal ? "_blank" : undefined}
+                                    rel={isExternal ? "noopener noreferrer" : undefined}
+                                >
+                                    {children}
+                                </a>
+                            );
                         }
                     }}
                 >
