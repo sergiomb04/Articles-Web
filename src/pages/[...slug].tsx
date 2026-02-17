@@ -3,7 +3,9 @@ import Head from 'next/head';
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
+import matter from 'gray-matter';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
+
 
 interface ArticleInfo {
     slug: string;
@@ -18,6 +20,7 @@ interface NavItem {
 
 interface ArticlePageProps {
     content?: string;
+    data?: { [key: string]: any };
     slug: string[];
     isDir: boolean;
     items?: ArticleInfo[];
@@ -25,13 +28,18 @@ interface ArticlePageProps {
     next?: NavItem | null;
 }
 
+
 // Helper to strip sorting prefixes for display and URLs
 const cleanSlug = (s: string) => s.replace(/^(#?\d+-)/, '');
 const cleanTitle = (s: string) => s.replace('.md', '').replace(/^(#?\d+-)/, '').replace(/-/g, ' ').trim();
 
-export default function ArticlePage({ content, slug, isDir, items, prev, next }: ArticlePageProps) {
+export default function ArticlePage({ content, data, slug, isDir, items, prev, next }: ArticlePageProps) {
     const rawTitle = slug[slug.length - 1];
-    const title = cleanTitle(rawTitle);
+    const title = data?.title || cleanTitle(rawTitle);
+    const author = data?.author;
+    const date = data?.date ? new Date(data.date).toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' }) : null;
+    const tags = data?.tags as string[] | undefined;
+
 
     return (
         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
@@ -67,6 +75,32 @@ export default function ArticlePage({ content, slug, isDir, items, prev, next }:
                         <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white capitalize mb-4">
                             {title}
                         </h1>
+                        {!isDir && (author || date || tags) && (
+                            <div className="flex flex-wrap items-center gap-4 text-sm text-slate-500 dark:text-slate-400 mt-6 mb-8">
+                                {author && (
+                                    <div className="flex items-center gap-2">
+                                        <span className="font-bold text-slate-700 dark:text-slate-200">Por {author}</span>
+                                    </div>
+                                )}
+                                {date && (
+                                    <div className="flex items-center gap-2">
+                                        <span>•</span>
+                                        <span>{date}</span>
+                                    </div>
+                                )}
+                                {tags && tags.length > 0 && (
+                                    <div className="flex items-center gap-2 flex-wrap">
+                                        <span>•</span>
+                                        {tags.map(tag => (
+                                            <span key={tag} className="bg-slate-100 dark:bg-slate-800 px-2.5 py-1 rounded-full text-xs font-bold text-blue-600 dark:text-blue-400">
+                                                #{tag}
+                                            </span>
+                                        ))}
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
                         {isDir && (
                             <p className="text-lg text-slate-600 dark:text-slate-400">
                                 Explora el contenido de esta categoría.
@@ -206,9 +240,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
             }
         };
     } else {
-        const content = fs.readFileSync(currentActualPath, 'utf8');
+        const fileContent = fs.readFileSync(currentActualPath, 'utf8');
+        const { data, content } = matter(fileContent);
 
         // Get navigation
+
         const parentDir = path.dirname(currentActualPath);
         const siblings = fs.readdirSync(parentDir).map(file => {
             const p = path.join(parentDir, file);
@@ -230,11 +266,13 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         return {
             props: {
                 content,
+                data,
                 slug,
                 isDir: false,
                 prev,
                 next
             },
         };
+
     }
 };
