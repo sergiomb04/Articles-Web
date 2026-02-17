@@ -2,7 +2,7 @@
 
 ---
 
-# 1. Idea central
+## 1. Idea central
 
 La consciencia es extradimensional desde el inicio.
 Nunca estuvo separada del Todo.

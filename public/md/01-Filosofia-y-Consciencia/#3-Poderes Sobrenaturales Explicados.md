@@ -2,7 +2,7 @@
 
 ---
 
-# 🌌 Idea central
+## 1. Idea central
 
 La realidad física no es fundamental.
 Es una proyección de un sistema con mayor dimensionalidad.

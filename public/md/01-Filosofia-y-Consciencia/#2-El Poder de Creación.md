@@ -2,7 +2,7 @@
 
 ---
 
-# 1. Idea central
+## 1. Idea central
 
 No creamos desde cero.
 Recordamos y alineamos.
