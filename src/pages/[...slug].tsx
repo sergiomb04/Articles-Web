@@ -369,7 +369,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
         };
     } else {
         const fileContent = fs.readFileSync(currentActualPath, 'utf8');
-        const { data, content } = matter(fileContent);
+        const { data, content: rawContent } = matter(fileContent);
+
+        // Simple minification: remove extra empty lines
+        const content = rawContent.replace(/\n\s*\n/g, '\n\n').trim();
+
 
         // Get navigation
 
@@ -400,6 +404,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
                 prev,
                 next
             },
+            revalidate: 60, // ISR: Revalidate every 60 seconds
         };
 
     }
