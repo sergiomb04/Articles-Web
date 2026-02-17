@@ -6,6 +6,7 @@ import remarkToc from 'remark-toc';
 import rehypeRaw from 'rehype-raw';
 import rehypeHighlight from 'rehype-highlight';
 import remarkMath from 'remark-math';
+import remarkUnwrapImages from 'remark-unwrap-images';
 import rehypeKatex from 'rehype-katex';
 import rehypeSlug from 'rehype-slug';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
@@ -198,7 +199,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                 prose-blockquote:border-l-4 prose-blockquote:border-slate-300 dark:prose-blockquote:border-slate-600 prose-blockquote:bg-slate-50/50 dark:prose-blockquote:bg-slate-800/10 prose-blockquote:px-8 prose-blockquote:py-2 prose-blockquote:italic prose-blockquote:my-8
             `} id="article-content">
                 <ReactMarkdown
-                    remarkPlugins={[remarkGfm, remarkMath, [remarkToc, { heading: 'Tabla de Contenidos', tight: true, maxDepth: 3 }]]}
+                    remarkPlugins={[remarkGfm, remarkMath, remarkUnwrapImages, [remarkToc, { heading: 'Tabla de Contenidos', tight: true, maxDepth: 3 }]]}
                     rehypePlugins={[rehypeRaw, rehypeSlug, rehypeHighlight, rehypeKatex, [rehypeSanitize, {
                         ...defaultSchema,
                         tagNames: [...(defaultSchema.tagNames || []), 'iframe', 'div', 'section', 'style', 'figure', 'figcaption'],
@@ -213,12 +214,7 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                         }
                     }]]}
                     components={{
-                        p: ({ children }) => {
-                            const isBlock = React.Children.toArray(children).some((child: any) =>
-                                React.isValidElement(child) && ['div', 'figure', 'blockquote', 'table', 'pre', 'section'].includes(child.type as string)
-                            );
-                            return isBlock ? <div className="mb-4 leading-relaxed">{children}</div> : <p className="mb-4 leading-relaxed">{children}</p>;
-                        },
+                        p: ({ children }) => <p className="mb-4 leading-relaxed">{children}</p>,
                         blockquote: ({ children }) => {
                             const fullText = extractText(children).trim();
 
