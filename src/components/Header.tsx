@@ -85,8 +85,8 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
                 <div className="p-4 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
                     <span>{results.length} {siteConfig.ui.search.resultsCount}</span>
                     <div className="flex gap-4">
-                        <span>↑↓ para navegar</span>
-                        <span>↵ para seleccionar</span>
+                        <span>{siteConfig.ui.search.navigationHint}</span>
+                        <span>{siteConfig.ui.search.selectHint}</span>
                     </div>
                 </div>
             </div>

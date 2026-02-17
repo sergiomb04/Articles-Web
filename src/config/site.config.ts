@@ -88,6 +88,8 @@ export interface SiteConfig {
             minCharacters: string;
             tooltip: string;
             resultsCount: string;
+            navigationHint: string;
+            selectHint: string;
         };
         buttons: {
             print: string;
@@ -167,6 +169,8 @@ export const siteConfig: SiteConfig = {
             minCharacters: 'Type at least 2 characters to search...',
             tooltip: 'Search (Cmd+K)',
             resultsCount: 'results found',
+            navigationHint: '↑↓ to navigate',
+            selectHint: '↵ to select',
         },
         buttons: {
             print: 'Export to PDF',
