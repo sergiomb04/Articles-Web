@@ -5,8 +5,9 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
-import { useState, useEffect, useCallback } from 'react'; // Added useCallback
-import { Printer, Search, X, CornerDownLeft } from 'lucide-react'; // Added Printer
+import { useState, useEffect, useCallback } from 'react';
+import { Printer, Search, X, CornerDownLeft } from 'lucide-react';
+import TableOfContents from '@/components/TableOfContents';
 
 interface ArticleInfo {
     slug: string;
@@ -28,7 +29,6 @@ interface ArticlePageProps {
     prev?: NavItem | null;
     next?: NavItem | null;
 }
-
 
 // Helper to strip sorting prefixes for display and URLs
 const cleanSlug = (s: string) => s.replace(/^(#?\d+-)/, '');
@@ -57,7 +57,7 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
         const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'k' && (e.metaKey || e.ctrlKey)) {
                 e.preventDefault();
-                onClose ? onClose() : null; // This is actually for toggling, let's simplify
+                onClose ? onClose() : null;
             }
             if (e.key === 'Escape') onClose();
         };
@@ -195,8 +195,8 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
 
 
             <main className="pt-20">
-                <div className="max-w-4xl mx-auto px-6 py-12">
-                    <div className="mb-12">
+                <div className={`mx-auto px-6 py-12 ${isDir ? 'max-w-4xl' : 'max-w-4xl lg:max-w-[90rem]'}`}>
+                    <div className="mb-12 max-w-4xl mx-auto">
                         <Link href={slug.length > 1 ? `/${slug.slice(0, -1).join('/')}` : "/"} className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline mb-4 inline-block">
                             ← {slug.length > 1 ? "Volver atrás" : "Volver al inicio"}
                         </Link>
@@ -237,7 +237,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
                     </div>
 
                     {isDir ? (
-                        <div className="grid gap-6">
+                        <div className="grid gap-6 max-w-4xl mx-auto">
                             {items?.map((item) => (
                                 <Link
                                     key={item.slug}
@@ -259,31 +259,43 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
                             ))}
                         </div>
                     ) : (
-                        <>
-                            <MarkdownRenderer content={content || ''} />
+                        <div className="flex flex-col lg:flex-row justify-center gap-12 xl:gap-24 relative">
+                            {/* Sidebar pushed to the left by justify-center and gap */}
+                            <aside className="hidden lg:block w-64 shrink-0">
+                                {/* Sticky container needs to account for header height */}
+                                <div className="sticky top-24">
+                                    <TableOfContents content={content || ''} />
+                                </div>
+                            </aside>
 
-                            <div className="mt-16 flex flex-col sm:flex-row justify-between gap-4 border-t border-slate-200 dark:border-slate-800 pt-8">
-                                {prev ? (
-                                    <Link
-                                        href={`/${slug.slice(0, -1).concat(prev.slug).join('/')}`}
-                                        className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group"
-                                    >
-                                        <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Anterior</span>
-                                        <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1 capitalize">{prev.title}</p>
-                                    </Link>
-                                ) : <div className="flex-1" />}
+                            {/* Content constrained to avoid being too wide */}
+                            <div className="flex-1 min-w-0 max-w-4xl">
+                                <MarkdownRenderer content={content || ''} />
 
-                                {next ? (
-                                    <Link
-                                        href={`/${slug.slice(0, -1).concat(next.slug).join('/')}`}
-                                        className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group text-right"
-                                    >
-                                        <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Siguiente</span>
-                                        <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1 capitalize">{next.title}</p>
-                                    </Link>
-                                ) : <div className="flex-1" />}
+                                <div className="mt-16 flex flex-col sm:flex-row justify-between gap-4 border-t border-slate-200 dark:border-slate-800 pt-8">
+                                    {prev ? (
+                                        <Link
+                                            href={`/${slug.slice(0, -1).concat(prev.slug).join('/')}`}
+                                            className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group"
+                                        >
+                                            <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Anterior</span>
+                                            <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1 capitalize">{prev.title}</p>
+                                        </Link>
+                                    ) : <div className="flex-1" />}
+
+                                    {next ? (
+                                        <Link
+                                            href={`/${slug.slice(0, -1).concat(next.slug).join('/')}`}
+                                            className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group text-right"
+                                        >
+                                            <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Siguiente</span>
+                                            <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1 capitalize">{next.title}</p>
+                                        </Link>
+                                    ) : <div className="flex-1" />}
+                                </div>
                             </div>
-                        </>
+                            {/* Useful clear div or spacer if needed for 3-column balancing in future */}
+                        </div>
                     )}
                 </div>
             </main>

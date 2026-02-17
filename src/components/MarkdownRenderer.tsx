@@ -182,6 +182,12 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                     article { margin: 0 !important; padding: 0 !important; max-width: none !important; }
                     a:after { content: " (" attr(href) ") "; font-size: 0.8em; color: #666; }
                 }
+                @media (min-width: 1024px) {
+                    #tabla-de-contenidos,
+                    #tabla-de-contenidos + ul {
+                        display: none;
+                    }
+                }
             `}</style>
             <ReadingTime content={content} />
             <article className={`prose prose-slate dark:prose-invert max-w-none

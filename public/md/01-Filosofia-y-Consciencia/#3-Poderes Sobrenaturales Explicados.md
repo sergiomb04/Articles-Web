@@ -12,7 +12,7 @@ La materia está dentro de un campo de consciencia más amplio.
 
 ---
 
-## 1. Qué es realmente el “alma” o higher-self
+## 2. Qué es realmente el “alma” o higher-self
 
 No es algo externo.
 Es la identidad extradimensional que siempre fuimos.
@@ -29,7 +29,7 @@ Es interfaz de alineación.
 
 ---
 
-## 2. Qué son realmente los “superpoderes”
+## 3. Qué son realmente los “superpoderes”
 
 No son creación.
 Son recuerdo y alineación.
@@ -42,7 +42,7 @@ Es uso de capas superiores de la Realidad.
 
 ---
 
-## 3. Cómo ocurre la alteración física
+## 4. Cómo ocurre la alteración física
 
 No se empuja materia.
 No se genera energía absurda.
@@ -59,7 +59,7 @@ Pero es efecto de coherencia dimensional.
 
 ---
 
-## 4. Qué se entrena realmente
+## 5. Qué se entrena realmente
 
 No se entrena potencia.
 Se entrena alineación.
@@ -76,7 +76,7 @@ mayor acceso a capas superiores.
 
 ---
 
-## 5. Limitaciones
+## 6. Limitaciones
 
 No existe omnipotencia humana.
 
@@ -92,7 +92,7 @@ No reescribir el telar completo.
 
 ---
 
-## 6. Encaje con el Modelo Espiral
+## 7. Encaje con el Modelo Espiral
 
 Los “poderes” no son saltos evolutivos.
 Son momentos de recuerdo profundo dentro de la espiral.
@@ -102,7 +102,7 @@ Recuerda que siempre lo fue.
 
 ---
 
-## 7. Frase clave
+## 8. Frase clave
 
 No es que la mente controle la materia.
 Es que la mente no está completamente dentro de la materia.
