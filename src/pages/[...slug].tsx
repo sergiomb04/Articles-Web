@@ -6,6 +6,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import MarkdownRenderer from '@/components/MarkdownRenderer';
 import TableOfContents from '@/components/TableOfContents';
+import { siteConfig, getPageTitle, getFooterText } from '@/config/site.config';
 
 interface ArticleInfo {
     slug: string;
@@ -44,8 +45,8 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
     return (
         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
             <Head>
-                <title>{`${title.charAt(0).toUpperCase() + title.slice(1)} | Article Reader`}</title>
-                <meta name="description" content={data?.description || `Lee sobre ${title} en Article Reader`} />
+                <title>{getPageTitle(`${title.charAt(0).toUpperCase() + title.slice(1)}`)}</title>
+                <meta name="description" content={data?.description || `Lee sobre ${title} en ${siteConfig.branding.name}`} />
                 <meta property="og:title" content={title} />
                 <meta property="og:description" content={data?.description || `Explora el artículo sobre ${title}`} />
                 {data?.image && <meta property="og:image" content={data.image} />}
@@ -61,7 +62,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
                 <div className={`mx-auto px-6 py-12 ${isDir ? 'max-w-4xl' : 'max-w-4xl lg:max-w-[90rem]'}`}>
                     <div className="mb-12 max-w-4xl mx-auto">
                         <Link href={slug.length > 1 ? `/${slug.slice(0, -1).join('/')}` : "/"} className="text-sm font-medium text-blue-600 dark:text-blue-400 hover:underline mb-4 inline-block">
-                            ← {slug.length > 1 ? "Volver atrás" : "Volver al inicio"}
+                            ← {slug.length > 1 ? siteConfig.content.article.backButton.toParent : siteConfig.content.article.backButton.toHome}
                         </Link>
                         <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white capitalize mb-4">
                             {title}
@@ -94,7 +95,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
 
                         {isDir && (
                             <p className="text-lg text-slate-600 dark:text-slate-400">
-                                Explora el contenido de esta categoría.
+                                {siteConfig.content.article.folderSubtitle}
                             </p>
                         )}
                     </div>
@@ -113,7 +114,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
                                                 {item.title}
                                             </h2>
                                             <p className="mt-2 text-slate-500 dark:text-slate-400">
-                                                {item.isDir ? "📂 Categoría" : "📄 Artículo"}
+                                                {item.isDir ? siteConfig.content.home.itemLabels.folder.split(' • ')[0] : siteConfig.content.home.itemLabels.article.split(' • ')[0]}
                                             </p>
                                         </div>
                                         <span className="text-slate-300 group-hover:text-blue-500 transition-colors text-2xl">→</span>
@@ -141,7 +142,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
                                             href={`/${slug.slice(0, -1).concat(prev.slug).join('/')}`}
                                             className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group"
                                         >
-                                            <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Anterior</span>
+                                            <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">{siteConfig.content.article.navigation.previous}</span>
                                             <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1 capitalize">{prev.title}</p>
                                         </Link>
                                     ) : <div className="flex-1" />}
@@ -151,7 +152,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
                                             href={`/${slug.slice(0, -1).concat(next.slug).join('/')}`}
                                             className="flex-1 p-4 bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-blue-500 transition-all group text-right"
                                         >
-                                            <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">Siguiente</span>
+                                            <span className="text-xs text-slate-400 uppercase tracking-widest font-bold">{siteConfig.content.article.navigation.next}</span>
                                             <p className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors line-clamp-1 capitalize">{next.title}</p>
                                         </Link>
                                     ) : <div className="flex-1" />}
@@ -164,7 +165,7 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
             </main>
 
             <footer className="py-8 text-center text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-900 mt-12">
-                <p>© 2026 Article Reader - {slug.map(cleanSlug).join(' / ')}</p>
+                <p>{getFooterText(slug.map(cleanSlug).join(' / '))}</p>
             </footer>
         </div >
     );
