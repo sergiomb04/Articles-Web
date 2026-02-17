@@ -78,6 +78,7 @@ export interface SiteConfig {
             text: string;
             year: number;
             showPath: boolean;
+            rootPath: string;
         };
     };
     ui: {
@@ -97,7 +98,7 @@ export interface SiteConfig {
 
 export const siteConfig: SiteConfig = {
     branding: {
-        name: 'ArticleReader',
+        name: 'ArticlesWeb',
         tagline: 'Tu biblioteca de conocimiento',
         description: 'Sistema dinámico de artículos en Markdown con soporte completo para GFM, Mermaid, KaTeX y más.',
     },
@@ -153,9 +154,10 @@ export const siteConfig: SiteConfig = {
             folderSubtitle: 'Explora el contenido de esta categoría.',
         },
         footer: {
-            text: 'Article Reader',
+            text: 'Articles Web',
             year: 2026,
             showPath: true,
+            rootPath: 'Root',
         },
     },
     ui: {
@@ -188,8 +190,12 @@ export const getPageTitle = (pageTitle?: string): string => {
  */
 export const getFooterText = (path?: string): string => {
     const baseText = `© ${siteConfig.content.footer.year} ${siteConfig.content.footer.text}`;
-    if (path && siteConfig.content.footer.showPath) {
-        return `${baseText} - ${path}`;
+
+    if (!siteConfig.content.footer.showPath) {
+        return baseText;
     }
-    return baseText;
+
+    const finalPath = path ?? siteConfig.content.footer.rootPath;
+
+    return `${baseText} - ${finalPath}`;
 };

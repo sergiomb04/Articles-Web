@@ -60,7 +60,7 @@ export default function Home({ items }: HomeProps) {
             </div>
 
             <footer className="py-8 text-center text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-900 mt-12">
-                <p>{getFooterText('Root')}</p>
+                <p>{getFooterText()}</p>
             </footer>
         </div>
     );
