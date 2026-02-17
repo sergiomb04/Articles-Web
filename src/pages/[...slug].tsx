@@ -45,7 +45,17 @@ export default function ArticlePage({ content, data, slug, isDir, items, prev, n
         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
             <Head>
                 <title>{`${title.charAt(0).toUpperCase() + title.slice(1)} | Article Reader`}</title>
+                <meta name="description" content={data?.description || `Lee sobre ${title} en Article Reader`} />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={data?.description || `Explora el artículo sobre ${title}`} />
+                {data?.image && <meta property="og:image" content={data.image} />}
+                <meta property="og:type" content="article" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={title} />
+                <meta name="twitter:description" content={data?.description || `Lee más sobre ${title}`} />
+                {data?.image && <meta name="twitter:image" content={data.image} />}
             </Head>
+
 
             <header className="border-b border-slate-200/50 dark:border-slate-800/50 py-4 px-6 fixed top-0 w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl z-20">
                 <div className="max-w-4xl mx-auto flex justify-between items-center">
