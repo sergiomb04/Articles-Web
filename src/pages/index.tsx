@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import fs from 'fs';
 import path from 'path';
+import { siteConfig, getPageTitle, getFooterText } from '@/config/site.config';
 
 interface Item {
     slug: string;
@@ -22,16 +23,16 @@ export default function Home({ items }: HomeProps) {
     return (
         <div className="min-h-screen bg-slate-50 dark:bg-slate-900 transition-colors duration-300">
             <Head>
-                <title>Mis Artículos | Reader</title>
+                <title>{getPageTitle('Mis Artículos')}</title>
             </Head>
 
             <div className="max-w-4xl mx-auto px-6 py-20">
-                <header className="mb-12">
+                <header className="my-12">
                     <h1 className="text-4xl font-extrabold text-slate-900 dark:text-white mb-4">
-                        Biblioteca de Artículos
+                        {siteConfig.content.home.title}
                     </h1>
                     <p className="text-lg text-slate-600 dark:text-slate-400">
-                        Explora y lee artículos dinámicos renderizados directamente desde Markdown.
+                        {siteConfig.content.home.subtitle}
                     </p>
                 </header>
 
@@ -48,7 +49,7 @@ export default function Home({ items }: HomeProps) {
                                         {item.title}
                                     </h2>
                                     <p className="mt-2 text-slate-500 dark:text-slate-400">
-                                        {item.isDir ? "📂 Categoría • Ver carpeta" : "📄 Artículo • Leer ahora"}
+                                        {item.isDir ? siteConfig.content.home.itemLabels.folder : siteConfig.content.home.itemLabels.article}
                                     </p>
                                 </div>
                                 <span className="text-slate-300 group-hover:text-blue-500 transition-colors text-2xl">→</span>
@@ -59,7 +60,7 @@ export default function Home({ items }: HomeProps) {
             </div>
 
             <footer className="py-8 text-center text-slate-500 dark:text-slate-400 border-t border-slate-100 dark:border-slate-900 mt-12">
-                <p>© 2026 Article Reader - Root</p>
+                <p>{getFooterText()}</p>
             </footer>
         </div>
     );

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { Printer, Search, X, CornerDownLeft } from 'lucide-react';
+import { siteConfig } from '@/config/site.config';
 
 interface SearchResult {
     slug: string;
@@ -50,7 +51,7 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
                     <input
                         autoFocus
                         type="text"
-                        placeholder="Buscar artículos... (Esc para salir)"
+                        placeholder={siteConfig.ui.search.placeholder}
                         className="flex-1 bg-transparent border-none outline-none text-lg text-slate-900 dark:text-white placeholder:text-slate-400"
                         value={query}
                         onChange={(e) => setQuery(e.target.value)}
@@ -76,16 +77,16 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
                             </Link>
                         ))
                     ) : query.length > 1 ? (
-                        <div className="p-10 text-center text-slate-500">No se encontraron resultados para "{query}"</div>
+                        <div className="p-10 text-center text-slate-500">{siteConfig.ui.search.noResults} "{query}"</div>
                     ) : (
-                        <div className="p-10 text-center text-slate-400 text-sm italic">Escribe al menos 2 caracteres para buscar...</div>
+                        <div className="p-10 text-center text-slate-400 text-sm italic">{siteConfig.ui.search.minCharacters}</div>
                     )}
                 </div>
                 <div className="p-4 bg-slate-50 dark:bg-slate-900/50 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center text-[10px] font-bold text-slate-400 uppercase tracking-widest">
-                    <span>{results.length} resultados encontrados</span>
+                    <span>{results.length} {siteConfig.ui.search.resultsCount}</span>
                     <div className="flex gap-4">
-                        <span>↑↓ para navegar</span>
-                        <span>↵ para seleccionar</span>
+                        <span>{siteConfig.ui.search.navigationHint}</span>
+                        <span>{siteConfig.ui.search.selectHint}</span>
                     </div>
                 </div>
             </div>
@@ -95,6 +96,25 @@ const SearchModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ isOpe
 
 export default function Header() {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+    // Initialize theme on mount
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || siteConfig.theme.defaultMode;
+
+        if (theme === 'dark') {
+            document.documentElement.classList.add('dark');
+        } else if (theme === 'light') {
+            document.documentElement.classList.remove('dark');
+        } else if (theme === 'system') {
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (prefersDark) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+    }, []);
 
     useEffect(() => {
         const handleKeyDown = (e: KeyboardEvent) => {
@@ -113,31 +133,32 @@ export default function Header() {
             <header className="border-b border-slate-200/50 dark:border-slate-800/50 py-4 px-6 fixed top-0 w-full bg-white/70 dark:bg-slate-900/70 backdrop-blur-xl z-20">
                 <div className="max-w-4xl mx-auto flex justify-between items-center">
                     <Link href="/" className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-                        ArticleReader
+                        {siteConfig.branding.name}
                     </Link>
                     <div className="flex items-center gap-3">
                         <button
                             onClick={() => setIsSearchOpen(true)}
                             className="w-10 h-10 hidden sm:flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700"
-                            title="Buscar (Cmd+K)"
+                            title={siteConfig.ui.search.tooltip}
                         >
                             <Search size={20} />
                         </button>
                         <button
                             onClick={() => window.print()}
                             className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700"
-                            title="Exportar a PDF"
+                            title={siteConfig.ui.buttons.print}
                         >
                             <Printer size={20} />
                         </button>
                         <button
                             onClick={() => {
                                 if (typeof document !== 'undefined') {
-                                    document.documentElement.classList.toggle('dark');
+                                    const isDark = document.documentElement.classList.toggle('dark');
+                                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
                                 }
                             }}
                             className="w-10 h-10 flex items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all border border-slate-200 dark:border-slate-700"
-                            aria-label="Toggle dark mode"
+                            aria-label={siteConfig.ui.buttons.toggleTheme}
                         >
                             🌓
                         </button>
