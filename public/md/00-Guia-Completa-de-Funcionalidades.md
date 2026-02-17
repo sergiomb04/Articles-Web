@@ -61,8 +61,21 @@ Botones de "Anterior" y "Siguiente" con títulos formateados y capitalizados aut
 
 ### Pestañas y Acordeones
 Utiliza bloques de cita especiales para organizar contenido complejo:
-- **Tabs**: `[!TABS]` seguido de h4 para cada pestaña.
-- **Accordions**: `[!ACCORDION:Título]` para contenido desplegable.
+
+**Tabs**:
+> [!TABS]
+> #### Javascript
+> ```javascript
+> console.log("Hola desde JS");
+> ```
+> #### Python
+> ```python
+> print("Hola desde Python")
+> ```
+
+**Accordions**:
+> [!ACCORDION:¿Cómo funciona esto?]
+> El contenido dentro del acordeón solo se muestra cuando el usuario hace clic en el título. Esto ayuda a mantener la página limpia.
 
 ### Diagramas Mermaid
 Renderizado nativo de diagramas de flujo, secuencia y más:
@@ -107,4 +120,4 @@ Los cambios en los archivos `.md` se reflejan en el sitio producción en menos d
 ---
 
 > [!TIP]
-> Esta guía es un ejemplo vivo de lo que el sistema puede hacer. ¡Explora los archivos en `02-Documentacion` para ver ejemplos técnicos de cada sección!
+> Esta guía visualiza todas las capacidades del sistema. Puedes usar este archivo como referencia de "Cheat Sheet" para escribir tus futuros artículos.
