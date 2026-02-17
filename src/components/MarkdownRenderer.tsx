@@ -1,5 +1,7 @@
 import React from 'react';
+import Image from 'next/image';
 import ReactMarkdown from 'react-markdown';
+
 import remarkGfm from 'remark-gfm';
 import remarkToc from 'remark-toc';
 import rehypeRaw from 'rehype-raw';
@@ -244,12 +246,63 @@ const MarkdownRenderer: React.FC<MarkdownRendererProps> = ({ content }) => {
                             if (isInline) return <code className="bg-slate-100 dark:bg-slate-800 px-1.5 py-0.5 rounded text-sm text-pink-600 dark:text-pink-400 font-mono">{children}</code>;
                             return <code className={`${className} bg-transparent p-0`}>{children}</code>;
                         },
-                        img: ({ src, alt }) => (
-                            <figure className="my-10">
-                                <img src={src || ''} alt={alt || ''} className="rounded-2xl shadow-2xl mx-auto border-4 border-white dark:border-slate-800" />
-                                {alt && <figcaption className="text-center text-sm text-slate-500 mt-4 italic font-medium">{alt}</figcaption>}
-                            </figure>
-                        ),
+                        img: ({ src, alt }) => {
+                            const [isOpen, setIsOpen] = useState(false);
+                            if (!src) return null;
+
+                            return (
+                                <>
+                                    <figure className="my-10">
+                                        <div
+                                            className="relative group cursor-zoom-in"
+                                            onClick={() => setIsOpen(true)}
+                                        >
+                                            <div className="relative w-full aspect-video overflow-hidden rounded-2xl shadow-2xl border-4 border-white dark:border-slate-800 transition-transform duration-300 group-hover:scale-[1.02]">
+                                                <Image
+                                                    src={src}
+                                                    alt={alt || ''}
+                                                    fill
+                                                    className="object-cover"
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                                />
+                                            </div>
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/20 rounded-2xl">
+                                                {/* Optional: Add a zoom icon here */}
+                                            </div>
+                                        </div>
+                                        {alt && <figcaption className="text-center text-sm text-slate-500 mt-4 italic font-medium">{alt}</figcaption>}
+                                    </figure>
+
+                                    {isOpen && (
+                                        <div
+                                            className="fixed inset-0 z-[100] bg-black/80 flex items-center justify-center p-4"
+                                            onClick={() => setIsOpen(false)}
+                                        >
+                                            <button
+                                                className="absolute top-6 right-6 p-3 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors z-[110]"
+                                                onClick={(e) => { e.stopPropagation(); setIsOpen(false); }}
+                                            >
+                                                <X size={32} />
+                                            </button>
+                                            <div className="relative w-full h-full max-w-[90vw] max-h-[80vh]">
+                                                <Image
+                                                    src={src}
+                                                    alt={alt || ''}
+                                                    fill
+                                                    className="object-contain animate-in zoom-in-95 duration-300"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                />
+                                            </div>
+                                            {alt && (
+                                                <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white text-sm bg-black/50 px-4 py-2 rounded-full pointer-events-none">
+                                                    {alt}
+                                                </span>
+                                            )}
+                                        </div>
+                                    )}
+                                </>
+                            );
+                        },
                         a: ({ href, children }) => {
                             const isYoutube = href && (href.includes('youtube.com') || href.includes('youtu.be'));
                             if (isYoutube && children === href && href) {
